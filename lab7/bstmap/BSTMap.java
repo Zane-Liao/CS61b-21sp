@@ -7,7 +7,7 @@ public class BSTMap<K, V> implements Map61B<K, V> {
 
     @Override
     public void clear() {
-        
+
     }
 
     @Override
@@ -30,23 +30,43 @@ public class BSTMap<K, V> implements Map61B<K, V> {
 
     }
 
+    public void printInOrder() {
+
+    }
+
+    private class BSTNode {
+        private K k;
+        private V v;
+        private int left;
+        private int right;
+        private int size;
+
+        BSTNode(K k, V v, int size) {
+            this.k = k;
+            this.v = v;
+            this.size = size;
+        }
+
+
+    }
+
     @Override
     public Set<K> keySet() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public V remove(K key) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public V remove(K key, V value) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Iterator<K> iterator() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

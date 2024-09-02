@@ -47,19 +47,19 @@ public class InsertRandomSpeedTest {
         String s = "cat";
         for (int i = 0; i < N; i++) {
             s = StringUtils.randomString(L);
-            map61B.put(s, new Integer(i));
+            map61B.put(s, i);
         }
         return sw.elapsedTime();
     }
 
     /** Returns time needed to put N random strings of length L into the
-      * TreeMap treeMap. */
+      * TreeMap. */
     public static double insertRandom(TreeMap<String, Integer> treeMap, int N, int L) {
         Stopwatch sw = new Stopwatch();
         String s = "cat";
         for (int i = 0; i < N; i++) {
             s = StringUtils.randomString(L);
-            treeMap.put(s, new Integer(i));
+            treeMap.put(s, i);
         }
         return sw.elapsedTime();
     }
@@ -71,7 +71,7 @@ public class InsertRandomSpeedTest {
         String s = "cat";
         for (int i = 0; i < N; i++) {
             s = StringUtils.randomString(L);
-            treeMap.put(s, new Integer(i));
+            treeMap.put(s, i);
         }
         return sw.elapsedTime();
     }
