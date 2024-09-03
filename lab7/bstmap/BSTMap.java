@@ -3,11 +3,53 @@ package bstmap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class BSTMap<K, V> implements Map61B<K, V> {
+public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
+
+    private BSTNode root;
+    private int size;
+
+    private class BSTNode {
+        private K key;
+        private V value;
+        private BSTNode left;
+        private BSTNode right;
+        BSTNode(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
 
     @Override
-    public void clear() {
+    public V get(K key) {
+        return get(root, key);
+    }
 
+    private V get(BSTNode x, K key) {
+        if (key == null) throw new IllegalArgumentException("calls get() with a null key");
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) return get(x.left, key);
+        else if (cmp > 0) return get(x.right, key);
+        else return x.value;
+    }
+
+    @Override
+    public int size() {
+        return size(root);
+    }
+
+    private int size(BSTNode x) {
+        if (x == null) {
+            return 0;
+        }
+        else return size;
+    }
+
+    /** */
+    @Override
+    public void clear() {
+        root = null;
+        size = 0;
     }
 
     @Override
@@ -16,37 +58,11 @@ public class BSTMap<K, V> implements Map61B<K, V> {
     }
 
     @Override
-    public V get(K key) {
-        return null;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
     public void put(K key, V value) {
 
     }
 
     public void printInOrder() {
-
-    }
-
-    private class BSTNode {
-        private K k;
-        private V v;
-        private int left;
-        private int right;
-        private int size;
-
-        BSTNode(K k, V v, int size) {
-            this.k = k;
-            this.v = v;
-            this.size = size;
-        }
-
 
     }
 
