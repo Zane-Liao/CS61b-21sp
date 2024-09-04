@@ -21,13 +21,16 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         }
 
         BSTNode get(K k) {
-            if (k != null && k.equals(key)) {
+            if (k.equals(this.key)) {
                 return this;
             }
-            if (root == null) {
-                return null;
+            int cmp = k.compareTo(this.key);
+            if (cmp < 0 && left != null) {
+                return left.get(k);
+            } else if (cmp > 0 && right != null) {
+                return right.get(k);
             }
-            return root.get(key);
+            return null;
         }
     }
 
@@ -54,14 +57,13 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         if (x == null) {
             return 0;
         }
-        else return size;
+        return x.size;
     }
 
     /** */
     @Override
     public void clear() {
         root = null;
-        size = 0;
     }
 
     @Override
@@ -72,10 +74,8 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
 
     @Override
     public void put(K key, V val) {
-        if (root != null) {
-            BSTNode x = root.get(key);
-        }
-        put(root, key, val);
+        if (key == null) throw new IllegalArgumentException();
+        root = put(root, key, val);
     }
 
 
@@ -86,13 +86,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
             int cmp = key.compareTo(x.key);
             if (cmp < 0) x.left = put(x.left, key, value);
             else if (cmp > 0) x.right = put(x.right, key, value);
-            else x.value =value;
+            else x.value = value;
             x.size = 1 + size(x.left) + size(x.right);
             return x;
     }
 
     public void printInOrder() {
-
     }
 
     @Override
