@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a75fe990-1562-45df-b74e-cd3f94d27006" name="更改" comment="" />
+    <list default="true" id="a75fe990-1562-45df-b74e-cd3f94d27006" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/../lab7/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/.idea/libraries/javalib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/libraries/javalib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab7/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hashmap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/hashmap/MyHashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../library-sp21/library-sp21" beforeDir="false" afterPath="$PROJECT_DIR$/../library-sp21/library-sp21" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj2/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj2/.idea/libraries/javalib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/libraries/javalib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj2/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj3/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj3/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj3/.idea/libraries/javalib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj3/.idea/libraries/javalib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj3/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj3/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj3/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj3/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../proj3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj3/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,10 +52,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Projects/cs61b/skeleton-sp18/lab11",
-    "project.structure.last.edited": "项目",
+    "last_opened_file_path": "D:/Projects/cs61b/skeleton-sp21/library-sp21/library-sp21/javalib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "库",
     "project.structure.proportion": "0.15820312",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.16260162",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -46,6 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1724333603852</updated>
       <workItem from="1724333605009" duration="73000" />
+      <workItem from="1725445003042" duration="41000" />
+      <workItem from="1725530698720" duration="1739000" />
     </task>
     <servers />
   </component>
