@@ -11,10 +11,10 @@
       <change beforePath="$PROJECT_DIR$/../lab7/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab7/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab7/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javalib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javalib.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hashmap/MyHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/hashmap/MyHashMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../library-sp21/library-sp21" beforeDir="false" afterPath="$PROJECT_DIR$/../library-sp21/library-sp21" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../proj2/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../proj2/.idea/libraries/javalib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../proj2/.idea/libraries/javalib.xml" afterDir="false" />
@@ -73,7 +73,7 @@
       <updated>1724333603852</updated>
       <workItem from="1724333605009" duration="73000" />
       <workItem from="1725445003042" duration="41000" />
-      <workItem from="1725530698720" duration="1739000" />
+      <workItem from="1725530698720" duration="2413000" />
     </task>
     <servers />
   </component>
