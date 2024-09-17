@@ -1,8 +1,6 @@
 package hashmap;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 /**
  *  A hash table-backed Map implementation. Provides amortized constant time
@@ -12,32 +10,47 @@ import java.util.Set;
  *  @author YOUR NAME HERE
  */
 public class MyHashMap<K, V> implements Map61B<K, V> {
+    private Node next;
+    int size = 0;
 
+    /** Removes all of the mappings from this map */
     @Override
     public void clear() {
-
+        buckets = null;
+        size = 0;
     }
 
+    /**
+     * Returns true if and only if this dictionary contains KEY as the
+     * key of some key-value pair.
+     */
     @Override
     public boolean containsKey(K key) {
-        return false;
+        if (key == null) throw new IllegalArgumentException();
+        return get(key) != null;
     }
 
+    /** Returns the value corresponding to KEY or null if no such value exists. */
     @Override
     public V get(K key) {
-        return null;
+        if (key == null) throw new IllegalArgumentException();
+        return get(key);
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
+    /** Inserts the key-value pair of KEY and VALUE into this dictionary,
+     * replacing the previous value associated to KEY, if any.
+     */
     @Override
     public void put(K key, V value) {
 
     }
 
+    /** Returns a Set view of the keys contained in this map. */
     @Override
     public Set<K> keySet() {
         return null;
@@ -75,9 +88,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
     /* Instance Variables */
     private Collection<Node>[] buckets;
     // You should probably define some more!
-
     /** Constructors */
-    public MyHashMap() { }
+    public MyHashMap() { super(); }
 
     public MyHashMap(int initialSize) { }
 
@@ -116,7 +128,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * OWN BUCKET DATA STRUCTURES WITH THE NEW OPERATOR!
      */
     protected Collection<Node> createBucket() {
-        return null;
+        return new LinkedList<>();
     }
 
     /**
