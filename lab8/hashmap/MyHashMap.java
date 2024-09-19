@@ -77,7 +77,22 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
 
     @Override
     public Iterator<K> iterator() {
-        return null;
+        return new MyHashMapIterator();
+    }
+
+    private class MyHashMapIterator implements Iterator<K> {
+
+        /** */
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        /***/
+        @Override
+        public K next() {
+            return null;
+        }
     }
 
     /**
@@ -158,8 +173,16 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      *
      * @param tableSize the size of the table to create
      */
+
+    /** OpenAI4o */
     private Collection<Node>[] createTable(int tableSize) {
-        return null;
+        Collection<Node>[] table = new Collection[tableSize];
+
+        for (int i = 0; i < tableSize; i++) {
+            table[i] = new HashSet<>();
+        }
+
+        return table;
     }
 
     // TODO: Implement the methods of the Map61B Interface below
