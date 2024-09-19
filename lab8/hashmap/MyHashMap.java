@@ -10,113 +10,21 @@ import java.util.*;
  *  @author YOUR NAME HERE
  */
 public class MyHashMap<K, V> implements Map61B<K, V> {
-//    private Node next;
-    private MyHashMap<K, V>[] st;
-    int size = 0;
-
-    /** Removes all of the mappings from this map */
-    @Override
-    public void clear() {
-        buckets = null;
-        size = 0;
-    }
-
-    /**
-     * Returns true if and only if this dictionary contains KEY as the
-     * key of some key-value pair.
-     */
-    @Override
-    public boolean containsKey(K key) {
-        if (key == null) throw new IllegalArgumentException();
-        return get(key) != null;
-    }
-
-    /** Returns the value corresponding to KEY or null if no such value exists. */
-    @Override
-    public V get(K key) {
-        if (key == null) throw new IllegalArgumentException();
-        int i = key.hashCode();
-        return st[i].get(key);
-    }
-
-    @Override
-    public int size() {
-        return size;
-    }
-
-    /** Inserts the key-value pair of KEY and VALUE into this dictionary,
-     * replacing the previous value associated to KEY, if any.
-     */
-    @Override
-    public void put(K key, V value) {
-        if (key == null || value == null) throw new IllegalArgumentException();
-        int i = key.hashCode();
-        if (!st[i].containsKey(key)) {
-            st[i].put(key, value);
-        }
-//        key.equals();
-    }
-
-    transient Set<K> keySet;
-
-    /** Returns a Set view of the keys contained in this map. */
-    @Override
-    public Set<K> keySet() {
-        return keySet;
-    }
-
-    @Override
-    public V remove(K key) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Iterator<K> iterator() {
-        return new MyHashMapIterator();
-    }
-
-    private class MyHashMapIterator implements Iterator<K> {
-
-        /** */
-        @Override
-        public boolean hasNext() {
-            return false;
-        }
-
-        /***/
-        @Override
-        public K next() {
-            return null;
-        }
-    }
-
-    /**
-     * Protected helper class to store key/value pairs
-     * The protected qualifier allows subclass access
-     */
-    protected class Node {
-        K key;
-        V value;
-
-        Node(K k, V v) {
-            key = k;
-            value = v;
-        }
-    }
-
+    private static final int DEFAULT_INITIAL_SIZE = 16;
+    private static final double DEFAULT_MAX_LOAD_FACTOR = 0.75;
     /* Instance Variables */
     private Collection<Node>[] buckets;
+    private int size;
+    private double maxLoadFactor;
+
     // You should probably define some more!
     /** Constructors */
-    public MyHashMap() { super(); }
+    public MyHashMap() {
+        this(DEFAULT_INITIAL_SIZE, DEFAULT_MAX_LOAD_FACTOR);
+    }
 
     public MyHashMap(int initialSize) {
-        initialSize = 16;
+        this(initialSize, DEFAULT_MAX_LOAD_FACTOR);
     }
 
     /**
@@ -127,12 +35,12 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      * @param maxLoad maximum load factor
      */
     public MyHashMap(int initialSize, double maxLoad) {
-        initialSize = 16;
-        maxLoad = 0.75;
-        double loadFacter = (double) size() / buckets.length;
-        if (maxLoad <= loadFacter) {
-            initialSize = hashCode() % buckets.length;
+        if (initialSize <= 0 || maxLoad <= 0) {
+            throw new IllegalArgumentException();
         }
+        this.maxLoadFactor = maxLoad;
+        this.size = 0;
+        this.buckets = createTable(initialSize);
     }
 
     /**
@@ -185,6 +93,172 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return table;
     }
 
+
+    /** Removes all of the mappings from this map */
+    @Override
+    public void clear() {
+        buckets = createTable(16);
+        size = 0;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Returns true if and only if this dictionary contains KEY as the
+     * key of some key-value pair.
+     */
+    @Override
+    public boolean containsKey(K key) {
+        if (key == null) throw new IllegalArgumentException();
+        return getNode(key) != null;
+    }
+
+    /** Returns the value corresponding to KEY or null if no such value exists. */
+    @Override
+    public V get(K key) {
+        if (key == null) throw new IllegalArgumentException();
+        Node node = getNode(key);
+        return node == null ? null : node.value; // Checks if node is null.
+        // If node is null, returns null, otherwise returns node.value
+    }
+
+    /** Inserts the key-value pair of KEY and VALUE into this dictionary,
+     * replacing the previous value associated to KEY, if any.
+     */
+    @Override
+    public void put(K key, V value) {
+        if (key == null || value == null) throw new IllegalArgumentException();
+        if ((double) size / buckets.length > maxLoadFactor) {
+            resize(buckets.length*2);
+        }
+        int index = getIndex(key);
+        Collection<Node> bucket = buckets[index];
+        if (bucket == null) {
+            bucket = createBucket();
+            buckets[index] = bucket;
+        }
+
+        for (Node node : bucket) {
+            if (node.key.equals(key)) {
+                node.value = value;
+                return;
+            }
+        }
+
+        bucket.add(new Node(key, value));
+        size++;
+    }
+
+    transient Set<K> keySet;
+
+    /** Returns a Set view of the keys contained in this map. */
+    @Override
+    public Set<K> keySet() {
+        Set<K> keys = new HashSet<>();
+        for (Collection<Node> bucket : buckets) {
+            if (bucket != null) {
+                for (Node node : bucket) {
+                    keys.add(node.key);
+                }
+            }
+        }
+        return keys;
+    }
+
+    private Node getNode(K key) {
+        int index = getIndex(key);
+        Collection<Node> bucket = buckets[index];
+        if (bucket != null) {
+            for(Node node : bucket) {
+                if (node.key.equals(key)) {
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
+    //***//
+    private void resize(int newSize) {
+        Collection<Node>[] newBuckets = createTable(newSize);
+        for (Collection<Node> bucket: buckets) {
+            if (bucket != null) {
+                for (Node node : bucket) {
+                    int newIndex = (node.key.hashCode() & 0x7fffffff) % newSize;
+                    if (newBuckets[newIndex] == null) {
+                        newBuckets[newIndex] = createBucket();
+                    }
+                    newBuckets[newIndex].add(node);
+                }
+            }
+        }
+        buckets = newBuckets;
+    }
+
+    private int getIndex(K key) {
+        return (key.hashCode() & 0x7fffffff) % buckets.length;
+    }
+
+    @Override
+    public V remove(K key) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public V remove(K key, V value) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Iterator<K> iterator() {
+        return new MyHashMapIterator();
+    }
+
+    private class MyHashMapIterator implements Iterator<K> {
+        Node next;
+        int index;
+
+        /** */
+        @Override
+        public boolean hasNext() {
+            while (next == null && index < buckets.length) {
+                next = (Node) buckets[index++];
+            }
+            return next != null;
+        }
+
+        /** */
+        @Override
+        public K next() {
+            Node e = next;
+            Node current = next;
+            next = current.next;
+            if (e == null)
+                throw new NoSuchElementException();
+            if (next == null && index < buckets.length) {
+                while (index < buckets.length && buckets[index++] == null) {}
+            }
+            return current.key;
+        }
+    }
+
+    /**
+     * Protected helper class to store key/value pairs
+     * The protected qualifier allows subclass access
+     */
+    protected class Node {
+        public Node next;
+        K key;
+        V value;
+
+        Node(K k, V v) {
+            key = k;
+            value = v;
+        }
+    }
     // TODO: Implement the methods of the Map61B Interface below
     // Your code won't compile until you do so!
 
